@@ -105,7 +105,8 @@ namespace ekpVPNLkBkV1
             textBox6.Text = Global.statu2;
             textBox7.Text = Global.currentCount;
             textBox8.Text = Global.routeTxt;
-            textBox9.Text = Global.isLink + " _____ " + Global.isRoute;
+            textBox9.Text = Global.isLink + " _____ " + Global.isRoute + " __ " +Global.getip;
+            textBox10.Text = Global.countserver + " ____ "   + Global.countroute;
              //textBox5.Text = MemGet.MemcacheGet()
         }
 
@@ -116,8 +117,11 @@ namespace ekpVPNLkBkV1
 
         private void timer5_Tick(object sender, EventArgs e)
         {
-            Thread tri = new Thread(auv.GetIP);
-            tri.Start();
+            if (Global.getipCount <= 10)
+            {
+                Thread tri = new Thread(auv.GetIP);
+                tri.Start();
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -125,11 +129,12 @@ namespace ekpVPNLkBkV1
             tmem= new Thread(auv.WaitToGetip);
             tmem.Start();
             if (Global.getip) {
-                if (Global.isLink && !Global.isRoute && Global.statu1 == "平台已连接")
+                if (Global.isLink && !Global.isRoute && Global.nip != "" && Global.statu1 == "平台已连接")
                 {
                    // auv.ChangeRouteIP(Global.nip);
                     textBox1.Text = "";
                     Global.s = "";
+                    textBox11.Text += " world";
                     tr = new Thread(auv.OpenVpnToRoute);
                     tr.Start();
                     Global.getip = false;
@@ -177,13 +182,15 @@ namespace ekpVPNLkBkV1
             {
                // textBox1.Text = "";
                 Global.s = "";
+                Global.isLink = true;
+                textBox11.Text = "hello";
                 thd = new Thread(auv.OpenVpnToServer);
                 thd.Start();
                 if (thd.ThreadState == System.Threading.ThreadState.Stopped)
                 {
                     Console.WriteLine("线程结束");
                 }
-                Global.isLink = true;               
+                        
             }
             //else {
             //    timer2.Stop();

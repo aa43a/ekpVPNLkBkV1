@@ -48,6 +48,8 @@
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.textBox11 = new System.Windows.Forms.TextBox();
             this.myMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -192,11 +194,27 @@
             this.textBox9.Size = new System.Drawing.Size(163, 21);
             this.textBox9.TabIndex = 8;
             // 
+            // textBox10
+            // 
+            this.textBox10.Location = new System.Drawing.Point(208, 325);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(120, 21);
+            this.textBox10.TabIndex = 9;
+            // 
+            // textBox11
+            // 
+            this.textBox11.Location = new System.Drawing.Point(350, 325);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(120, 21);
+            this.textBox11.TabIndex = 10;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(753, 358);
+            this.Controls.Add(this.textBox11);
+            this.Controls.Add(this.textBox10);
             this.Controls.Add(this.textBox9);
             this.Controls.Add(this.textBox8);
             this.Controls.Add(this.textBox7);
@@ -237,6 +255,8 @@
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox textBox11;
     }
 }
 

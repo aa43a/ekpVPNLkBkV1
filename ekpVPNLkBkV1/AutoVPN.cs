@@ -81,11 +81,8 @@ namespace ekpVPNLkBkV1
                 {
                     if (prc.ProcessName == "openvpn")
                     {
-                        if (Global.statu1 == "平台已连接")
-                        {
-                            Global.isLink = true;
-                            return;
-                        }
+                        Global.isLink = true;
+                        return;
                     }
                 }
                 //if (Global.statu1 == "平台已连接")
@@ -95,12 +92,14 @@ namespace ekpVPNLkBkV1
                 //}
                 if (!Global.isLink)
                 {
+                    Global.countserver++;
                     Process cmd = new Process();
                     StartProcess(cmd);
                     cmd.StandardInput.WriteLine("c:");
                     cmd.StandardInput.WriteLine(@"cd " + Global.path + @"\openvpn");
                    // cmd.StandardInput.WriteLine(@"cd C:\Users\zhangsf\Desktop\OpenVPN\config");
                     cmd.StandardInput.WriteLine("openvpn --config web.ovpn --auth-user-pass ss.txt");
+                   
                     
                     StreamReader reader = cmd.StandardOutput;
                     string line = reader.ReadLine();//每次读取一行
@@ -142,7 +141,7 @@ namespace ekpVPNLkBkV1
                     Global.oip = Global.nip;
                     ChangeRouteIP(Global.nip);
                     Global.getip = true;
-                    Global.isgetip = true;
+                  //  Global.isgetip = true;
                 }
 
             }
@@ -177,13 +176,15 @@ namespace ekpVPNLkBkV1
                 
                 if (!Global.isRoute)
                 {
+                    Global.countroute++;
                     Process cmd = new Process();
                     StartProcess(cmd);
                     cmd.StandardInput.WriteLine("c:");
                     cmd.StandardInput.WriteLine(@"cd " + Global.path + @"\openvpn");
                    // cmd.StandardInput.WriteLine(@"cd C:\Users\zhangsf\Desktop\OpenVPN\config");
                     cmd.StandardInput.WriteLine("openvpn --config route.ovpn");
-                   // Global.isRoute = true;
+                    
+                    Global.isRoute = true;
                     StreamReader reader = cmd.StandardOutput;
                     string line = reader.ReadLine();//每次读取一行
                     while (!reader.EndOfStream)
@@ -196,9 +197,8 @@ namespace ekpVPNLkBkV1
                            line.Split(' ')[6] == "Sequence" &&
                            line.Split(' ')[7] == "Completed")
                         {
-                            Global.isRoute = true;
-                            Global.statu2 = Global.nip + "已连接";
-                            
+                            Global.isRouted = true;
+                            Global.statu2 = Global.nip + "已连接";                         
                         }
                         Global.s += line + "\n";
                     }

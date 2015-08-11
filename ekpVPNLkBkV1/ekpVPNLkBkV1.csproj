@@ -25,7 +25,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <TargetCulture>zh-Hans</TargetCulture>
     <PublisherName>ekplink</PublisherName>
-    <ApplicationRevision>26</ApplicationRevision>
+    <ApplicationRevision>41</ApplicationRevision>
     <ApplicationVersion>1.0.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>

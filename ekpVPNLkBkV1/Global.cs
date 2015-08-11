@@ -13,7 +13,11 @@ namespace ekpVPNLkBkV1
         public static bool isLink = false;
         public static bool getip = false;
         public static bool isRoute = false;
-        public static bool isgetip = false;
+        public static bool isRouted = false;
+
+        public static int countserver = 0;
+        public static int countroute = 0;
+        public static int getipCount = 0;
 
         public static string oip = "10.8.0.0";
         public static string nip = "";

@@ -243,31 +243,15 @@ namespace ekpVPNLkBkV1
         }
 
         public void GetIP() {
-            //string tempip = "";
-            //try
-            //{
-            //    WebRequest wr = WebRequest.Create("http://www.ip138.com/ip2city.asp");
-            //    Stream s = wr.GetResponse().GetResponseStream();
-            //    StreamReader sr = new StreamReader(s, Encoding.Default);
-            //    string all = sr.ReadToEnd(); //读取网站的数据
-
-            //    int start = all.IndexOf("[") + 1;
-            //    int end = all.IndexOf("]", start);
-            //    tempip = all.Substring(start, end - start);
-            //    sr.Close();
-            //    s.Close();
-            //}
-            //catch
-            //{
-            //}
             string tempip = "";
             try
             {
-                WebRequest wr = WebRequest.Create("http://www.ip138.com/ips138.asp");
+                WebRequest wr = WebRequest.Create("http://www.ip138.com/ip2city.asp");
                 Stream s = wr.GetResponse().GetResponseStream();
                 StreamReader sr = new StreamReader(s, Encoding.Default);
                 string all = sr.ReadToEnd(); //读取网站的数据
-                int start = all.IndexOf("您的IP地址是：[") + 9;
+
+                int start = all.IndexOf("[") + 1;
                 int end = all.IndexOf("]", start);
                 tempip = all.Substring(start, end - start);
                 sr.Close();
@@ -276,8 +260,27 @@ namespace ekpVPNLkBkV1
             catch
             {
             }
+            //string tempip = "";
+            //Global.getipCount++;
+            //try
+            //{
+            //    WebRequest wr = WebRequest.Create("http://www.ip138.com/ips138.asp");
+            //    Stream s = wr.GetResponse().GetResponseStream();
+            //    StreamReader sr = new StreamReader(s, Encoding.Default);
+            //    string all = sr.ReadToEnd(); //读取网站的数据
+            //    int start = all.IndexOf("您的IP地址是：[") + 9;
+            //    int end = all.IndexOf("]", start);
+            //    tempip = all.Substring(start, end - start);
+            //    sr.Close();
+            //    s.Close();
+            //}
+            //catch
+            //{
+            //}
             //return tempip;
+            if (tempip != "")
             Global.outip = tempip;
+            
 
         }
 
